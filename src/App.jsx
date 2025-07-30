@@ -1,9 +1,33 @@
 import React from "react";
-
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/student/Home";
+import CoursesList from "./pages/student/CoursesList";
+import CourseDetails from "./pages/student/CourseDetails";
+import MyEnrollments from "./pages/student/MyEnrollments";
+import VideoPlayer from "./pages/student/VideoPlayer";
+import Loading from "./components/student/Loading";
 const App = () => {
   return (
     <div>
-      <h1 className="text-3xl border-2 border-amber-400">Header</h1>
+      <Routes>
+
+        {/* students routes  */}
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/course-list" element={<CoursesList />}></Route>
+        <Route path="/course/:id" element={<CourseDetails />}></Route>
+        <Route path="/course-list/:input" element={<CoursesList />}></Route>
+        <Route path="/my-enrollments" element={<MyEnrollments />}></Route>
+        <Route path="/video-player/:courseId" element={<VideoPlayer />}></Route>
+        <Route path="/loading/:path" element={<Loading />}></Route>
+      
+      {/* Educator nested routes  */}
+        <Route path="/educator" element={<Educator/>}>
+
+
+
+      </Route>
+      
+      </Routes>
     </div>
   );
 };
