@@ -10,10 +10,13 @@ import Loading from "./components/student/Loading";
 import Educator from "./pages/educator/Educator";
 import Dashboard from "./pages/educator/Dashboard";
 import AddCourse from "./pages/educator/AddCourse";
-import SrudentEnrolled from "./pages/educator/SrudentEnrolled";
+import StudentsEnrolled from "./pages/educator/StudentsEnrolled";
+import MyCourses from "./pages/educator/MyCourses";
+import Navbar from "./components/student/Navbar";
 const App = () => {
   return (
-    <div>
+    <div className="text-default min-h-screen bg-white">
+      <Navbar></Navbar>
       <Routes>
         {/* students routes  */}
         <Route path="/" element={<Home />}></Route>
@@ -26,10 +29,10 @@ const App = () => {
 
         {/* Educator nested routes  */}
         <Route path="/educator" element={<Educator />}>
-          <Route path="/educator" element={<Dashboard />} />
+          <Route path="educator" element={<Dashboard />} />
           <Route path="add-course" element={<AddCourse />} />
           <Route path="my-courses" element={<MyCourses />} />
-          <Route path="students-enrolled" element={<SrudentEnrolled />} />
+          <Route path="students-enrolled" element={<StudentsEnrolled />} />
         </Route>
       </Routes>
     </div>
