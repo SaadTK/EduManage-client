@@ -10,3 +10,30 @@
 .cl-internal-tk30ch {
   display: none;
 }
+
+@layer utilities {
+  .text-course-details-heading-small {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .text-course-details-heading-large {
+    font-size: 48px;
+    line-height: 60px;
+  }
+
+  .text-home-heading-small {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .text-home-heading-large {
+    font-size: 60px;
+    line-height: 70px;
+  }
+
+  .text-default {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
