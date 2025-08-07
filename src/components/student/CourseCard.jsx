@@ -4,7 +4,7 @@ import { AddContext } from "../../context/AddContext";
 import { Link } from "react-router-dom";
 
 const CourseCard = ({ course }) => {
-  const { currency } = useContext(AddContext);
+  const { currency, calculateRating } = useContext(AddContext);
 
   return (
     <Link
@@ -25,18 +25,22 @@ const CourseCard = ({ course }) => {
         {/* <p className="text-gray-500">{course.educator_name}</p> */}
 
         <div className="flex items-center space-x-2">
-          <p className="text-black">4.5</p>
+          <p className="text-black">{calculateRating(course)}</p>
           <div className="flex">
             {[...Array(5)].map((_, i) => (
               <img
                 className="w-3.5 h-3.5"
                 key={i}
-                src={assets.star}
+                src={
+                  i < Math.floor(calculateRating(course))
+                    ? assets.star
+                    : assets.star_blank
+                }
                 alt="ratings"
               />
             ))}
           </div>
-          <p className="text-gray-500">22</p>
+          <p className="text-gray-500">{course.courseRatings.length}</p>
         </div>
         <p className="text-base font-semibold text-gray-800">
           {currency}

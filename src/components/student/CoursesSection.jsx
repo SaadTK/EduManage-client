@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AddContext } from "../../context/AddContext";
 import CourseCard from "./CourseCard";
+import "../../index.css";
 
 const CoursesSection = () => {
   const { allCourses } = useContext(AddContext);
@@ -13,11 +14,11 @@ const CoursesSection = () => {
       </h2>
       <p className="text-sm md:text-base text-gray-500 mt-3 mb-5">
         Discover our top-rated courses across various categories. From coding
-        and design to business and wellness, our courses are crafted to deliver
-        results.
+        and design to<br></br> business and wellness, our courses are crafted to
+        deliver results.
       </p>
 
-      <div className="grid grid-cols-4 px-4 md:px-0 md:my-16 my-10 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 px-4 md:px-0 mt-6 md:mt-10 mb-10 md:mb-16">
         {allCourses.slice(0, 4).map((course, i) => (
           <CourseCard key={i} course={course} />
         ))}
