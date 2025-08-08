@@ -23,7 +23,11 @@ const Companies = () => (
         alt="Accenture"
         className="mx-6 w-40 md:w-48 object-contain hover:scale-105 transition-transform"
       />
-      <img src={assets.adobe_logo} alt="Adobe" className="mx-6 w-40 md:w-48 object-contain hover:scale-105 transition-transform" />
+      <img
+        src={assets.adobe_logo}
+        alt="Adobe"
+        className="mx-6 w-40 md:w-48 object-contain hover:scale-105 transition-transform"
+      />
       <img
         src={assets.paypal_logo}
         alt="Paypal"

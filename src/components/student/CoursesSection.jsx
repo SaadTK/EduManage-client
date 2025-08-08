@@ -8,7 +8,7 @@ const CoursesSection = () => {
   const { allCourses } = useContext(AddContext);
 
   return (
-    <div className="py-16 md:px-40 px-8">
+    <div className="py-10 md:px-40 px-8">
       <h2 className="txt-3xl font-medium text-gray-500 mb-5">
         Learn from the best
       </h2>
