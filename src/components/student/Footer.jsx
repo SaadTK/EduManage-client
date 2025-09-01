@@ -15,18 +15,34 @@ const Footer = () => {
         <div className="flex flex-col md:items-start items-center w-full">
           <h2 className="font-semibold text-white mb-5">Company</h2>
           <ul className="flex md:flex-col w-full justify-between text-sm text-white/80 md:space-y-2">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Privacy Policy</a></li>
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">About Us</a>
+            </li>
+            <li>
+              <a href="#">Contact Us</a>
+            </li>
+            <li>
+              <a href="#">Privacy Policy</a>
+            </li>
           </ul>
         </div>
         <div className="hidden md:flex flex-col items-start w-full">
-          <h2 className="font-semibold text-white/80">The Latest News, Articles, and Resources, Sent to Your Inbox Weekly.</h2>
+          <h2 className="font-semibold text-white/80">
+            The Latest News, Articles, and Resources, Sent to Your Inbox Weekly.
+          </h2>
           <div className="flex items-center gap-2 pt-4">
-            <input type="email" placeholder="Enter Your Email" className="border border-gray-500/30 br-gray-800 text-gray-500 placeholder-gray-500 outline-none w-64 h-9 rounded px-2 text-sm" />
-            <button className="bg-blue-600 w-24 h-9 text-white rounded">Subscribe</button>
-        </div>
+            <input
+              type="email"
+              placeholder="Enter Your Email"
+              className="border border-gray-500/30 br-gray-800 text-gray-500 placeholder-gray-500 outline-none w-64 h-9 rounded px-2 text-sm"
+            />
+            <button className="bg-blue-600 w-24 h-9 text-white rounded text-[14px]">
+              Subscribe
+            </button>
+          </div>
         </div>
       </div>
       <p className="py-4 text-center text-xs md:text-sm text-white/60">

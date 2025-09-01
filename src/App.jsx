@@ -5,7 +5,7 @@ import CoursesList from "./pages/student/CoursesList";
 import CourseDetails from "./pages/student/CourseDetails";
 import MyEnrollments from "./pages/student/MyEnrollments";
 import VideoPlayer from "./pages/student/VideoPlayer";
-import Loading from "./components/student/Loading";
+// import Loading from "./components/student/Loading";
 
 import Educator from "./pages/educator/Educator";
 import Dashboard from "./pages/educator/Dashboard";
@@ -13,6 +13,7 @@ import AddCourse from "./pages/educator/AddCourse";
 import StudentsEnrolled from "./pages/educator/StudentsEnrolled";
 import MyCourses from "./pages/educator/MyCourses";
 import Navbar from "./components/student/Navbar";
+import Loader from "./components/student/Loader";
 const App = () => {
   const isEducatorRoute = useMatch("/educator/*");
 
@@ -28,7 +29,7 @@ const App = () => {
         <Route path="/course-list/:input" element={<CoursesList />}></Route>
         <Route path="/my-enrollments" element={<MyEnrollments />}></Route>
         <Route path="/video-player/:courseId" element={<VideoPlayer />}></Route>
-        <Route path="/loading/:path" element={<Loading />}></Route>
+        <Route path="/loading/:path" element={<Loader />}></Route>
 
         {/* Educator nested routes  */}
 
