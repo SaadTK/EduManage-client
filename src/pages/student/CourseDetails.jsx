@@ -5,8 +5,6 @@ import Loading from "../../components/student/Loader";
 import { assets } from "../../assets/assets";
 import humanizeDuration from "humanize-duration";
 
-// import "../../Custom.css";
-
 const CourseDetails = () => {
   const { id } = useParams();
 
@@ -19,6 +17,7 @@ const CourseDetails = () => {
     calculateNoOfLectures,
     calculateCourseDuration,
     calculateChapterTime,
+    currency,
   } = useContext(AddContext);
 
   const fetchCourseData = async () => {
@@ -108,7 +107,13 @@ const CourseDetails = () => {
                       onClick={() => toggleSection(index)}
                     >
                       <div className="flex items-center gap-2">
-                        <img src={assets.down_arrow_icon} alt="arrow icon" />
+                        <img
+                          src={assets.down_arrow_icon}
+                          alt="arrow icon"
+                          className={`transform transition-transform ${
+                            openSections[index] ? "rotate-180" : ""
+                          }`}
+                        />
                         <p className="font-medium md:text-base text-sm">
                           {chapter.chapterTitle}
                         </p>
@@ -156,12 +161,95 @@ const CourseDetails = () => {
                 );
               })}
             </div>
+
+            {/* Course Description */}
+
+            <div className="py-20 text-sm md:text-default">
+              <h3 className="text-xl font-semibold text-gray-800">
+                Course Description
+              </h3>
+
+              <p
+                className="pt-3 rich-text"
+                dangerouslySetInnerHTML={{
+                  __html: courseData.courseDescription,
+                }}
+              ></p>
+            </div>
           </div>
         </div>
 
         {/* right column */}
 
-        <div></div>
+        <div className="max-w-course-card max-w-[424px] w-full z-10 shadow-custom-card shadow-xs rounded-t md:rounded-none overflow-hidden bg-white min-w-[300px] sm:min-w-[420px]">
+          <img src={courseData.courseThumbnail} alt="Course Thumbnail" />
+
+          <div className="p-5">
+            <div className="flex items-center gap-2">
+              <img
+                src={assets.time_left_clock_icon}
+                alt="time left clock icon"
+                className="w-3 5"
+              />
+              <p className="text-red-500">
+                <span className="font-medium">5 days</span> left at this price!
+              </p>
+            </div>
+
+            {/* one */}
+
+            <div className="flex gap-3 items-center pt-2">
+              <p className="text-gray-800 md:text-4xl text-2xl font-semibold">
+                {currency}
+                {(
+                  courseData.coursePrice -
+                  (courseData.discount * courseData.coursePrice) / 100
+                ).toFixed(2)}
+              </p>
+              <p className="md:text-lg text-gray-500 line-through">
+                {currency}
+              </p>
+              <p className="md:text-lg text-gray-500">
+                {courseData.discount}% Off
+              </p>
+            </div>
+
+            {/* one end  */}
+            {/* two  */}
+            <div className="flex items-center text-sm md:text-default gap-4 pt-2 md:pt-4 text-gray-500">
+              <div className="flex items-center gap-1">
+                <img src={assets.star} alt="star icon" />
+                <p>{calculateRating(courseData)}</p>
+              </div>
+
+              {/* divider  */}
+              <div className="h-4 w-px bg-gray-500/40"></div>
+              {/* divider end */}
+              {/* </div> */}
+
+              {/* three  */}
+              <div className="flex items-center gap-1">
+                <img src={assets.time_clock_icon} alt="time icon" />
+                <p>{calculateCourseDuration(courseData)}</p>
+              </div>
+              {/* three end */}
+
+              {/* divider  */}
+              <div className="h-4 w-px bg-gray-500/40"></div>
+              {/* divider end */}
+
+              {/* four  */}
+              <div className="flex items-center gap-1">
+                <img src={assets.lesson_icon} alt="lesson icon" />
+                <p>{calculateNoOfLectures(courseData)} lessons</p>
+              </div>
+
+              {/* four end */}
+
+              {/* two end  */}
+            </div>
+          </div>
+        </div>
       </div>
     </>
   ) : (
