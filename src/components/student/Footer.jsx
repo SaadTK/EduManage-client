@@ -7,14 +7,14 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row items-start px-8 md:px-0 justify-center gap-10 md:gap-32 py-10 border-b border-white/30">
         <div className="fex flex-col md:items-start items-center w-full">
           <img src={assets.logo} alt="logo" className="w-40" />
-          <p className="mt-6 text-center md:text-left text-sm text-white/80">
+          <p className="mt-6 text-center md:text-left text-[14px] text-white/80">
             Empowering learners and educators with seamless, secure, and
             scalable digital learning experiences.
           </p>
         </div>
         <div className="flex flex-col md:items-start items-center w-full">
           <h2 className="font-semibold text-white mb-5">Company</h2>
-          <ul className="flex md:flex-col w-full justify-between text-sm text-white/80 md:space-y-2">
+          <ul className="text-[12px] flex md:flex-col w-full justify-between text-white/80 md:space-y-2">
             <li>
               <a href="#">Home</a>
             </li>
