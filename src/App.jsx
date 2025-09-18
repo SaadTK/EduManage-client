@@ -4,7 +4,7 @@ import Home from "./pages/student/Home";
 import CoursesList from "./pages/student/CoursesList";
 import CourseDetails from "./pages/student/CourseDetails";
 import MyEnrollments from "./pages/student/MyEnrollments";
-import VideoPlayer from "./pages/student/VideoPlayer";
+import Player from "./pages/student/Player";
 // import Loading from "./components/student/Loading";
 
 import Educator from "./pages/educator/Educator";
@@ -28,7 +28,7 @@ const App = () => {
         <Route path="/course/:id" element={<CourseDetails />}></Route>
         <Route path="/course-list/:input" element={<CoursesList />}></Route>
         <Route path="/my-enrollments" element={<MyEnrollments />}></Route>
-        <Route path="/video-player/:courseId" element={<VideoPlayer />}></Route>
+        <Route path="/player/:courseId" element={<Player />}></Route>
         <Route path="/loading/:path" element={<Loader />}></Route>
 
         {/* Educator nested routes  */}
