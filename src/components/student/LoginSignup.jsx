@@ -3,7 +3,10 @@ import { createContext, useEffect, useState } from "react";
 import { dummyCourses } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 import humanizeDuration from "humanize-duration";
-import { auth, googleProvider } from "../firebaseConfig";
+import {
+  auth,
+  googleProvider,
+} from "../firebase";
 import {
   signInWithPopup,
   signOut,
@@ -16,7 +19,6 @@ export const AddContext = createContext();
 
 export const AppContextProvider = (props) => {
   const currency = import.meta.env.VITE_CURRENCY;
-
   const navigate = useNavigate();
 
   const [allCourses, setAllCourses] = useState([]);
@@ -28,14 +30,18 @@ export const AppContextProvider = (props) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      if (currentUser) {
+        navigate("/course-list"); // 👈 redirect after login
+      }
     });
     return () => unsubscribe();
-  }, []);
+  }, [navigate]);
 
   // 🔹 Google login
   const loginWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
+      navigate("/course-list"); // 👈 redirect
     } catch (err) {
       console.error("Google login error:", err.message);
     }
@@ -45,6 +51,7 @@ export const AppContextProvider = (props) => {
   const signupWithEmail = async (email, password) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
+      navigate("/course-list"); // 👈 redirect
     } catch (err) {
       console.error("Signup error:", err.message);
     }
@@ -54,6 +61,7 @@ export const AppContextProvider = (props) => {
   const loginWithEmail = async (email, password) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      navigate("/course-list"); // 👈 redirect
     } catch (err) {
       console.error("Login error:", err.message);
     }
@@ -63,18 +71,15 @@ export const AppContextProvider = (props) => {
   const logout = async () => {
     try {
       await signOut(auth);
+      navigate("/"); // 👈 back to home
     } catch (err) {
       console.error("Logout error:", err.message);
     }
   };
 
   // Dummy fetch
-  const fetchAllCourses = async () => {
-    setAllCourses(dummyCourses);
-  };
-  const fetchUserEnrolledCourses = async () => {
-    setEnrolledCourses(dummyCourses);
-  };
+  const fetchAllCourses = async () => setAllCourses(dummyCourses);
+  const fetchUserEnrolledCourses = async () => setEnrolledCourses(dummyCourses);
 
   useEffect(() => {
     fetchAllCourses();
@@ -106,7 +111,7 @@ export const AppContextProvider = (props) => {
   );
 };
 
-// Helper functions
+// Helper functions same as before…
 const calculateRating = (course) => {
   if (course.courseRatings.length === 0) return 0;
   let total = 0;
