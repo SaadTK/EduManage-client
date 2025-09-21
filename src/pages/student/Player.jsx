@@ -11,12 +11,18 @@ const Player = () => {
   const [openSections, setOpenSections] = useState({});
   const [playerData, setPlayerData] = useState(null);
 
+  // const getCourseData = () => {
+  //   enrolledCourses.map((course) => {
+  //     if (course._id === courseId) {
+  //       setCourseData(course);
+  //     }
+  //   });
+  // };
   const getCourseData = () => {
-    enrolledCourses.map((course) => {
-      if (course._Id === courseId) {
-        setCourseData(course);
-      }
-    });
+    const foundCourse = enrolledCourses.find(
+      (course) => String(course._id) === String(courseId)
+    );
+    setCourseData(foundCourse || null);
   };
 
   const toggleSection = (index) => {
