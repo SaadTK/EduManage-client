@@ -6,7 +6,7 @@ import { assets } from "../../assets/assets";
 import humanizeDuration from "humanize-duration";
 // import Footer from "../../components/student/Footer";
 import Footer from "../../components/student/Footer";
-import Youtube from "react-youtube";
+import YouTube from "react-youtube";
 
 const CourseDetails = () => {
   const { id } = useParams();
@@ -197,7 +197,7 @@ const CourseDetails = () => {
 
         <div className="ml-20 max-w-course-card max-w-[424px] w-full z-10 shadow-custom-card shadow-xl rounded-t md:rounded-none overflow-hidden bg-white min-w-[300px] sm:min-w-[420px] ">
           {playerData ? (
-            <Youtube
+            <YouTube
               videoId={playerData.videoId}
               opts={{ playerVars: { autoplay: 1 } }}
               iframeClassName="w-full aspect-video"

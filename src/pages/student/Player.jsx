@@ -3,6 +3,9 @@ import { AddContext } from "../../context/AddContext";
 import { useParams } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import humanizeDuration from "humanize-duration";
+import YouTube from "react-youtube";
+import Footer from "../../components/student/Footer";
+import Rating from "../../components/student/Rating";
 
 const Player = () => {
   const { enrolledCourses, calculateChapterTime } = useContext(AddContext);
@@ -34,7 +37,7 @@ const Player = () => {
 
   useEffect(() => {
     getCourseData();
-  }, []);
+  }, [enrolledCourses]);
 
   return (
     <>
@@ -120,11 +123,44 @@ const Player = () => {
                 );
               })}
           </div>
+
+          <div className="flex items-center gap-2 py-3 mt-10">
+            <h1 className="text-xl font-bold">Rate This Course:</h1>
+            <Rating intialRating={0}></Rating>
+          </div>
         </div>
 
         {/* right col  */}
-        <div></div>
+        <div className="md:mt-10">
+          {playerData ? (
+            <div>
+              <YouTube
+                videoId={playerData.lectureUrl.split("/").pop()}
+                iframeClassName="w-full aspect-video"
+              />
+              <div className="flex justify-between items-center mt-1">
+                <p>
+                  {playerData.chapter}.{playerData.lecture}{" "}
+                  {playerData.lectureTitle}
+                </p>
+                <button className="text-blue-600">
+                  {false ? "Completed" : "Mark Completed"}
+                </button>
+              </div>
+            </div>
+          ) : (
+            <img
+              src={
+                courseData ? courseData.courseThumbnail : assets.no_video_icon
+              }
+              alt="Course Thumbnail"
+              className="w-full h-full object-cover rounded"
+            />
+          )}
+        </div>
       </div>
+
+      <Footer></Footer>
     </>
   );
 };
